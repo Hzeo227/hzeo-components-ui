@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { watch, ref } from 'vue'
+import * as ElIcons from '@element-plus/icons-vue'
+import { toLine } from '@/utils'
 
 let props = defineProps<{
   // 弹出框的标题
@@ -44,11 +46,45 @@ watch(
   <el-button @click="handleClick" type="primary">
     <slot></slot>
   </el-button>
-  <el-dialog :title="title" v-model="dialogVisible">111</el-dialog>
+  <el-dialog :title="title" v-model="dialogVisible">
+    <el-scrollbar>
+      <div class="container">
+        <div class="item" v-for="(item, index) in Object.keys(ElIcons)" :key="index">
+          <div>
+            <component :is="`el-icon-${toLine(item)}`"></component>
+          </div>
+          {{ item }}
+        </div>
+      </div>
+    </el-scrollbar>
+  </el-dialog>
 </template>
 
 <style lang="scss" scoped>
-.choose-icon {
-  color: red;
+.container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.item {
+  width: 25%;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+svg {
+  width: 2em;
+  height: 2em;
+}
+</style>
+
+<style>
+.el-dialog__body {
+  height: 500px;
 }
 </style>
