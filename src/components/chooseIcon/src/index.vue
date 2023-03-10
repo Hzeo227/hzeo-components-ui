@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { watch, ref } from 'vue'
+
 let props = defineProps<{
   // 弹出框的标题
   title: string
@@ -13,16 +15,31 @@ let handleClick = () => {
   emits('update:visible', !props.visible)
 }
 
-let handleClose = () => {
-  emits('update:visible', !props.visible)
-}
+// 拷贝一份父组件传过来的 visible
+// 因为子组件尽量不要直接修改父组件传过来的 props 属性
+let dialogVisible = ref<boolean>(props.visible)
+
+watch(
+  () => props.visible,
+  (val) => {
+    dialogVisible.value = val
+    emits('update:visible', val)
+  }
+)
+
+watch(
+  () => dialogVisible.value,
+  (val) => {
+    emits('update:visible', val)
+  }
+)
 </script>
 
 <template>
   <el-button @click="handleClick" type="primary">
     <slot></slot>
   </el-button>
-  <el-dialog :title="title" :modelValue="visible" :before-close="handleClose">111</el-dialog>
+  <el-dialog :title="title" v-model="dialogVisible">111</el-dialog>
 </template>
 
 <style lang="scss" scoped>
