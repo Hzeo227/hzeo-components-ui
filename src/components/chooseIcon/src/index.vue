@@ -2,6 +2,7 @@
 import { watch, ref } from 'vue'
 import * as ElIcons from '@element-plus/icons-vue'
 import { toLine } from '@/utils'
+import { useCopy } from '@/hooks/useCopy'
 
 let props = defineProps<{
   // 弹出框的标题
@@ -12,9 +13,16 @@ let props = defineProps<{
 
 let emits = defineEmits(['update:visible'])
 
+// 点击按钮显示弹出框
 let handleClick = () => {
   // 需要修改父组件的数据
   emits('update:visible', !props.visible)
+}
+
+// 点击复制图标
+let clickItem = (item: string) => {
+  let text = `<el-icon-${toLine(item)} />`
+  useCopy(text)
 }
 
 // 隐藏 dialog 时，无法对 props.visible 进行写操作
@@ -49,10 +57,13 @@ watch(
   <el-dialog :title="title" v-model="dialogVisible">
     <el-scrollbar>
       <div class="container">
-        <div class="item" v-for="(item, index) in Object.keys(ElIcons)" :key="index">
-          <div>
-            <component :is="`el-icon-${toLine(item)}`"></component>
-          </div>
+        <div
+          class="item"
+          v-for="(item, index) in Object.keys(ElIcons)"
+          :key="index"
+          @click="clickItem(item)"
+        >
+          <component :is="`el-icon-${toLine(item)}`"></component>
           {{ item }}
         </div>
       </div>
@@ -73,7 +84,7 @@ watch(
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   cursor: pointer;
 }
 
