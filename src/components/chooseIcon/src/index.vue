@@ -19,6 +19,7 @@ let handleClick = () => {
 // 拷贝一份父组件传过来的 visible
 let dialogVisible = ref<boolean>(props.visible)
 
+// 两次监听会不会消耗性能
 watch(
   () => props.visible,
   (val) => {
