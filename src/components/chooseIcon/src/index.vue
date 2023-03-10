@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch } from 'vue'
+import { watch, ref } from 'vue'
 
 let props = defineProps<{
   // 弹出框的标题
@@ -15,20 +15,35 @@ let handleClick = () => {
   emits('update:visible', !props.visible)
 }
 
+// 隐藏 dialog 时，无法对 props.visible 进行写操作
+// 拷贝一份父组件传过来的 visible
+let dialogVisible = ref<boolean>(props.visible)
+
 watch(
   () => props.visible,
   (val) => {
-    emits('update:visible', val)
+    // emits('update:visible', val)
+    // 监听 props.visible 值的变化，对 dialogVisible 进行操作
+    dialogVisible.value = val
+    // console.log("visible");
   }
 )
 
+watch(
+  () => dialogVisible.value,
+  (val) => {
+    // 监听 dialogVisible 值的变化，向更改父组件的 props.visible 的值
+    emits('update:visible', val)
+    // console.log("dialogVisible");
+  }
+)
 </script>
 
 <template>
   <el-button @click="handleClick" type="primary">
     <slot></slot>
   </el-button>
-  <el-dialog :title="title" v-model="props.visible">111</el-dialog>
+  <el-dialog :title="title" v-model="dialogVisible">111</el-dialog>
 </template>
 
 <style lang="scss" scoped>
