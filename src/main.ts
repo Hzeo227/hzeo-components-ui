@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 
 import router from './router'
+import HzeoUI from './components'
 
 import 'normalize.css'
 import '@/assets/css/reset.css'
@@ -19,4 +20,5 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 app.use(router)
 app.use(ElementPlus)
+app.use(HzeoUI)
 app.mount('#app')

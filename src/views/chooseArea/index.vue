@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import ChooseArea, { type AreaItem } from '@/components/chooseArea/src/index.vue'
+import type { AreaItem } from '@/components/chooseArea/src/index.vue';
+
 
 export interface AreaInfo {
   province: AreaItem
