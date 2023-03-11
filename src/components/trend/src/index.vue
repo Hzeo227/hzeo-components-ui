@@ -1,0 +1,54 @@
+<script setup lang="ts">
+let props = defineProps({
+  // 标记当前趋势是上升(up)还是下降(down)
+  trendType: {
+    type: String,
+    default: 'up'
+  },
+  // 趋势显示的文字
+  // 1. 父组件传递过来的数据
+  // 2. 插槽
+  trendText: {
+    type: String,
+    default: '文字'
+  },
+  upTrendColor: {
+    type: String,
+    default: '#f5222d'
+  },
+  downTrendColor: {
+    type: String,
+    default: '#52c41a'
+  }
+})
+</script>
+
+<template>
+  <div class="trend">
+    <div class="text">
+      {{ trendText }}
+    </div>
+    <div class="icon">
+      <el-icon-arrowup :style="{ color: upTrendColor }" v-if="trendType === 'up'"></el-icon-arrowup>
+      <el-icon-arrowdown :style="{ color: downTrendColor }" v-else></el-icon-arrowdown>
+    </div>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.trend {
+  display: flex;
+  align-items: center;
+
+  .text {
+    font-size: 12px;
+    margin-right: 4px;
+  }
+  .icon {
+    svg {
+      width: 0.8em;
+      height: 0.8em;
+    }
+  }
+}
+</style>
