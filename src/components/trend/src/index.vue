@@ -19,6 +19,11 @@ let props = defineProps({
   downTrendColor: {
     type: String,
     default: '#52c41a'
+  },
+  // 颜色反转只在使用默认颜色时生效
+  reverseColor: {
+    type: Boolean,
+    default: false
   }
 })
 </script>
@@ -26,11 +31,18 @@ let props = defineProps({
 <template>
   <div class="trend">
     <div class="text">
-      {{ trendText }}
+      <slot v-if="$slots.default"></slot>
+      <div v-else>{{ trendText }}</div>
     </div>
     <div class="icon">
-      <el-icon-arrowup :style="{ color: upTrendColor }" v-if="trendType === 'up'"></el-icon-arrowup>
-      <el-icon-arrowdown :style="{ color: downTrendColor }" v-else></el-icon-arrowdown>
+      <el-icon-arrowup
+        :style="{ color: !reverseColor ? upTrendColor : '#52c41a' }"
+        v-if="trendType === 'up'"
+      ></el-icon-arrowup>
+      <el-icon-arrowdown
+        :style="{ color: !reverseColor ? downTrendColor : '#f5222d' }"
+        v-else
+      ></el-icon-arrowdown>
     </div>
   </div>
 </template>
