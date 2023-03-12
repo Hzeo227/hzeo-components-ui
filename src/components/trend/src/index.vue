@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { toLine } from '@/utils'
 import { computed } from 'vue'
 
 let props = defineProps({
@@ -14,18 +15,32 @@ let props = defineProps({
     type: String,
     default: '文字'
   },
-  upTrendColor: {
+  // 上升趋势图标
+  upIconType: {
+    type: String,
+    default: 'ArrowUp'
+  },
+  // 下降趋势图标
+  downIconType: {
+    type: String,
+    default: 'ArrowDown'
+  },
+  // 上升趋势图标颜色
+  upIconColor: {
     type: String,
     default: '#f5222d'
   },
-  downTrendColor: {
+  // 下降趋势图标颜色
+  downIconColor: {
     type: String,
     default: '#52c41a'
   },
+  // 上升趋势文字颜色
   upTextColor: {
     type: String,
     default: '#f5222d'
   },
+  // 下降趋势文字颜色
   downTextColor: {
     type: String,
     default: '#52c41a'
@@ -50,14 +65,16 @@ let textColor = computed(() => {
       <div v-else>{{ trendText }}</div>
     </div>
     <div class="icon">
-      <el-icon-arrowup
-        :style="{ color: !reverseColor ? upTrendColor : '#52c41a' }"
+      <component
         v-if="trendType === 'up'"
-      ></el-icon-arrowup>
-      <el-icon-arrowdown
-        :style="{ color: !reverseColor ? downTrendColor : '#f5222d' }"
+        :is="`el-icon-${toLine(upIconType)}`"
+        :style="{ color: !reverseColor ? upIconColor : '#52c41a' }"
+      ></component>
+      <component
         v-else
-      ></el-icon-arrowdown>
+        :is="`el-icon-${toLine(downIconType)}`"
+        :style="{ color: !reverseColor ? downIconColor : '#f5222d' }"
+      ></component>
     </div>
   </div>
 </template>
