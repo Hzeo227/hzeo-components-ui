@@ -14,7 +14,7 @@ const changeArea = (res: AreaInfo) => {
 </script>
 
 <template>
-  <choose-area @change="changeArea"></choose-area>
+  <hz-choose-area @change="changeArea"></hz-choose-area>
 </template>
 
 <style lang="scss" scoped></style>

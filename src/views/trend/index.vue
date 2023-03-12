@@ -2,12 +2,12 @@
 
 <template>
   <div class="trend">
-    <!--<trend trendText="营业额"></trend>
-    <trend trendText="销售额" trendType="down"></trend>-->
-    <!--<trend>营业额</trend>
-    <trend trendText="销售额" trendType="down"></trend>-->
-    <trend trendText="销售额"></trend>
-    <trend trendText="营业额" trendType="down"></trend>
+    <!--<hz-trend trendText="营业额"></hz-trend>
+    <hz-trend trendText="销售额" trendType="down"></hz-trend>-->
+    <!--<hz-trend>营业额</hz-trend>
+    <hz-trend trendText="销售额" trendType="down"></hz-trend>-->
+    <hz-trend trendText="销售额"></hz-trend>
+    <hz-trend trendText="营业额" trendType="down"></hz-trend>
   </div>
 </template>
 

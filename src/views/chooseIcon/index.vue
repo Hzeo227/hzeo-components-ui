@@ -5,7 +5,7 @@ let visible = ref<boolean>(false)
 </script>
 
 <template>
-  <choose-icon title="选择图标" v-model:visible="visible">选择图标</choose-icon>
+  <hz-choose-icon title="选择图标" v-model:visible="visible">选择图标</hz-choose-icon>
 </template>
 
 <style lang="scss" scoped>
