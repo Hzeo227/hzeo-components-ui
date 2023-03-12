@@ -38,12 +38,12 @@ let props = defineProps({
   // 上升趋势文字颜色
   upTextColor: {
     type: String,
-    default: '#f5222d'
+    default: 'rgb(0,0,0)'
   },
   // 下降趋势文字颜色
   downTextColor: {
     type: String,
-    default: '#52c41a'
+    default: 'rgb(0,0,0)'
   },
   // 颜色反转只在使用默认颜色时生效
   reverseColor: {
