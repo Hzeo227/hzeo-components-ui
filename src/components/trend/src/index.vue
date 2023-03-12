@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 let props = defineProps({
   // 标记当前趋势是上升(up)还是下降(down)
   trendType: {
@@ -20,17 +22,30 @@ let props = defineProps({
     type: String,
     default: '#52c41a'
   },
+  upTextColor: {
+    type: String,
+    default: '#f5222d'
+  },
+  downTextColor: {
+    type: String,
+    default: '#52c41a'
+  },
   // 颜色反转只在使用默认颜色时生效
   reverseColor: {
     type: Boolean,
     default: false
   }
 })
+
+// 文字颜色
+let textColor = computed(() => {
+  return props.trendType === 'up' ? props.upTextColor : props.downTextColor
+})
 </script>
 
 <template>
   <div class="trend">
-    <div class="text">
+    <div class="text" :style="{ color: textColor }">
       <slot v-if="$slots.default"></slot>
       <div v-else>{{ trendText }}</div>
     </div>

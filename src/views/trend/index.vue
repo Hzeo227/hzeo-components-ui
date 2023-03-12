@@ -6,8 +6,10 @@
     <hz-trend trendText="销售额" trendType="down"></hz-trend>-->
     <!--<hz-trend>营业额</hz-trend>
     <hz-trend trendText="销售额" trendType="down"></hz-trend>-->
-    <hz-trend trendText="销售额"></hz-trend>
-    <hz-trend trendText="营业额" trendType="down"></hz-trend>
+    <!-- <hz-trend trendText="销售额"></hz-trend>
+    <hz-trend trendText="营业额" trendType="down"></hz-trend> -->
+    <hz-trend trendText="营业额" upTextColor="blue"></hz-trend>
+    <hz-trend trendText="销售额" trendType="down" downTextColor="yellow"></hz-trend>
   </div>
 </template>
 
