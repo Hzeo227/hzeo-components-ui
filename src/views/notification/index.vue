@@ -1,17 +1,25 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { list, actions } from './data'
+
+const clickContainerItem = (val: any) => {
+  console.log(val)
+}
+
+const clickAction = (val: any) => {
+  console.log(val)
+}
+</script>
 
 <template>
   <div class="item">
-    <hz-notification :value="12"></hz-notification>
-  </div>
-  <div class="item">
-    <hz-notification :value="121" :max="99"></hz-notification>
-  </div>
-  <div class="item">
-    <hz-notification :value="121" :max="99" isDot></hz-notification>
-  </div>
-  <div class="item">
-    <hz-notification icon="ChatRound" :value="121" :max="99" isDot></hz-notification>
+    <hz-notification :value="12">
+      <hz-list
+        :list="list"
+        :actions="actions"
+        @clickContainerItem="clickContainerItem"
+        @clickAction="clickAction"
+      ></hz-list>
+    </hz-notification>
   </div>
 </template>
 
