@@ -1,14 +1,13 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-
 import router from './router'
-import HzeoUI from './components'
 
-import 'normalize.css'
-import '@/assets/css/reset.css'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+
+import HzeoUI from './components'
+import '@/styles/index.scss' // global css
 import { toLine } from '@/utils'
 
 const app = createApp(App)

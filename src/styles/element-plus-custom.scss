@@ -1,0 +1,18 @@
+// chooseIcon 组件中 dialog 内容高度
+.hz-choose-icon-dialog-body-height {
+  .el-dialog__body {
+    height: 500px;
+  }
+}
+
+// 列表 tabs
+.list-tabs__item {
+  .el-tabs__nav {
+    width: 100%;
+    display: flex;
+  }
+  .el-tabs__item {
+    flex: 1;
+    text-align: center;
+  }
+}

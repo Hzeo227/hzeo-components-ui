@@ -14,19 +14,19 @@ export interface Data {
 }
 
 // 所有省市区的数据
-let areas = ref(allAreas)
+const areas = ref(allAreas)
 // 省份下拉框的值
-let province = ref<string>()
+const province = ref<string>()
 // 城市下拉框的值
-let city = ref<string>()
+const city = ref<string>()
 // 区域下拉框的值
-let area = ref<string>()
+const area = ref<string>()
 
 // 分发事件给父组件
-let emits = defineEmits(['change'])
+const emits = defineEmits(['change'])
 
 // 城市下拉框的所有值
-let selectCity = ref<AreaItem[]>([])
+const selectCity = ref<AreaItem[]>([])
 watch(
   () => province.value,
   (val) => {
@@ -40,7 +40,7 @@ watch(
 )
 
 // 区域下拉框的所有值
-let selectArea = ref<AreaItem[]>([])
+const selectArea = ref<AreaItem[]>([])
 watch(
   () => city.value,
   (val) => {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { toLine } from '@/utils'
 
-let props = defineProps({
+const props = defineProps({
   // 图标类型
   icon: {
     type: String,

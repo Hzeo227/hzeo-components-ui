@@ -1,5 +1,5 @@
 <script setup lang="ts">
-let props = defineProps<{
+const props = defineProps<{
   collapse: boolean
 }>()
 </script>

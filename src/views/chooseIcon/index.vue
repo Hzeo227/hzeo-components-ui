@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-let visible = ref<boolean>(false)
+const visible = ref<boolean>(false)
 </script>
 
 <template>
@@ -9,7 +9,4 @@ let visible = ref<boolean>(false)
 </template>
 
 <style lang="scss" scoped>
-.choose-icon {
-  color: red;
-}
 </style>

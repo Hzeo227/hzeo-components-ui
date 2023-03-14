@@ -4,30 +4,30 @@ import * as ElIcons from '@element-plus/icons-vue'
 import { toLine } from '@/utils'
 import { useCopy } from '@/hooks/useCopy'
 
-let props = defineProps<{
+const props = defineProps<{
   // 弹出框的标题
   title: string
   // 是否显示弹出框
   visible: boolean
 }>()
 
-let emits = defineEmits(['update:visible'])
+const emits = defineEmits(['update:visible'])
 
 // 点击按钮显示弹出框
-let handleClick = () => {
+const handleClick = () => {
   // 需要修改父组件的数据
   emits('update:visible', !props.visible)
 }
 
 // 点击复制图标
-let clickItem = (item: string) => {
+const clickItem = (item: string) => {
   let text = `<el-icon-${toLine(item)} />`
   useCopy(text)
 }
 
 // 隐藏 dialog 时，无法对 props.visible 进行写操作
 // 拷贝一份父组件传过来的 visible
-let dialogVisible = ref<boolean>(props.visible)
+const dialogVisible = ref<boolean>(props.visible)
 
 // 两次监听会不会消耗性能
 watch(
@@ -54,7 +54,7 @@ watch(
   <el-button @click="handleClick" type="primary">
     <slot></slot>
   </el-button>
-  <el-dialog :title="title" v-model="dialogVisible">
+  <el-dialog class="hz-choose-icon-dialog-body-height" :title="title" v-model="dialogVisible">
     <el-scrollbar>
       <div class="container">
         <div
@@ -91,11 +91,5 @@ watch(
 svg {
   width: 2em;
   height: 2em;
-}
-</style>
-
-<style>
-.el-dialog__body {
-  height: 500px;
 }
 </style>

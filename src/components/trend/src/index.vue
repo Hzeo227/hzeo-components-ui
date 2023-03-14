@@ -2,7 +2,7 @@
 import { toLine } from '@/utils'
 import { computed } from 'vue'
 
-let props = defineProps({
+const props = defineProps({
   // 标记当前趋势是上升(up)还是下降(down)
   trendType: {
     type: String,
@@ -53,7 +53,7 @@ let props = defineProps({
 })
 
 // 文字颜色
-let textColor = computed(() => {
+const textColor = computed(() => {
   return props.trendType === 'up' ? props.upTextColor : props.downTextColor
 })
 </script>

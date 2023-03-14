@@ -4,23 +4,22 @@ const toggle = () => {
   emits('update:collapse', !props.collapse)
 }
 
-let props = defineProps<{
+const props = defineProps<{
   collapse: boolean
 }>()
-let emits = defineEmits(['update:collapse'])
+const emits = defineEmits(['update:collapse'])
 </script>
 
 <template>
   <div class="header">
     <span @click="toggle">
-    <el-icon-expand v-if="collapse" style="margin-right: 10px" />
-    <el-icon-fold v-else />
-  </span>
+      <el-icon-expand v-if="collapse" style="margin-right: 10px" />
+      <el-icon-fold v-else />
+    </span>
   </div>
 </template>
 
 <style lang="scss" scoped>
-
 .header {
   height: 60px;
   padding: 0 20px;

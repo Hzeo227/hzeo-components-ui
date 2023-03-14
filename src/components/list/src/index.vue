@@ -126,20 +126,3 @@ const clickAction = (item: ActionOptions, index: number) => {
   border-right: 1px solid #eee;
 }
 </style>
-
-<!-- 重置 elementplus 样式 -->
-<style lang="scss">
-.list-tabs__item {
-  .el-tabs__nav {
-    width: 100%;
-    display: flex;
-  }
-  .el-tabs__item {
-    flex: 1;
-    text-align: center;
-  }
-}
-.el-popover {
-  --el-popover-padding: 0 !important;
-}
-</style>
